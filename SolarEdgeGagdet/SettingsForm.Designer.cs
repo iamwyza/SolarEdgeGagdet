@@ -135,7 +135,7 @@
             this.lblToleranceOffset.TabIndex = 9;
             this.lblToleranceOffset.Text = "Tolerance Offset:";
             // 
-            // Settings
+            // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -151,8 +151,8 @@
             this.Controls.Add(this.lblSiteId);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
-            this.Name = "Settings";
-            this.Text = "SettingsForm";
+            this.Name = "SettingsForm";
+            this.Text = "Settings";
             this.ResumeLayout(false);
             this.PerformLayout();
 
