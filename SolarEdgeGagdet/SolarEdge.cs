@@ -18,8 +18,6 @@ namespace SolarEdgeGagdet
             var cookiejar = new CookieContainer();
             Login(ref cookiejar);
 
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
             var request = (HttpWebRequest)WebRequest.Create("https://monitoring.solaredge.com/solaredge-web/p/dashboard_data?fieldId=" + Settings.Default.SiteId);
             request.CookieContainer = cookiejar;
 

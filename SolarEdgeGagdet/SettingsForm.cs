@@ -1,6 +1,5 @@
 ﻿using SolarEdgeGagdet.Properties;
 using System;
-using System.Configuration;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -11,7 +10,6 @@ namespace SolarEdgeGagdet
         public SettingsForm()
         {
             InitializeComponent();
-            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
             tbSiteId.Text = Settings.Default.SiteId;
             tbUsername.Text = Settings.Default.Username;

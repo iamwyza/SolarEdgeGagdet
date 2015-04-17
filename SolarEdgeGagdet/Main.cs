@@ -1,6 +1,5 @@
 ﻿using SolarEdgeGagdet.Properties;
 using System;
-using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -51,6 +50,7 @@ namespace SolarEdgeGagdet
             chartYear.ChartAreas[0].AxisX.Interval = 1;
             lblMonthNow.Text = DateTime.Now.ToString("MMMM");
             lblYearNow.Text = DateTime.Now.Year.ToString();
+
             SetData();
 
             tooltip.Tag = String.Empty;
@@ -59,6 +59,19 @@ namespace SolarEdgeGagdet
             timer.Tick += (sender, e) => { SetData(); };
             timer.Start();
 
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            using (var pen = new Pen(Color.FromArgb(42, 42, 42)))
+            {
+                using (var formGraphics = CreateGraphics())
+                {
+                    formGraphics.DrawLine(pen, 273, 9, 273, 30);
+                    formGraphics.DrawLine(pen, 365, 9, 365, 30);
+                }
+            }
         }
 
         private void SetData()
