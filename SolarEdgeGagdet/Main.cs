@@ -99,17 +99,24 @@ namespace SolarEdgeGagdet
                     chartWeek.Series[0].Points.AddXY(new DateTime(1970, 1, 1).AddMilliseconds(data.energyChartData.start_week + (i * 1000 * 60 * 15)), 
                                                     data.energyChartData.power_chart_week[i] == null ? 0.0 : ApplyTolerance(data.energyChartData.power_chart_week[i], toleranceAdjustment));
                 }
-
+                var multiplier = 1;
+                if (data.energyChartData.month_uom == "mega")
+                    multiplier = 1000;
                 chartMonth.Series[0].Points.Clear();
                 for (var i = 0; i < data.energyChartData.energy_chart_month_by_day.production.data.Count; i++)
                 {
-                    chartMonth.Series[0].Points.AddXY(i + 1, ApplyTolerance(data.energyChartData.energy_chart_month_by_day.production.data[i], toleranceAdjustment));
+                    chartMonth.Series[0].Points.AddXY(i + 1, ApplyTolerance(data.energyChartData.energy_chart_month_by_day.production.data[i] * multiplier, toleranceAdjustment));
                 }
+
+                if (data.energyChartData.year_uom == "mega")
+                    multiplier = 1000;
+                else
+                    multiplier = 1;
 
                 chartYear.Series[0].Points.Clear();
                 for(var i = 0; i< data.energyChartData.energy_chart_year_by_month.production.data.Count; i++)
                 {
-                    chartYear.Series[0].Points.AddXY(new DateTime(DateTime.Now.Year, i + 1, 1), ApplyTolerance(data.energyChartData.energy_chart_year_by_month.production.data[i], toleranceAdjustment));
+                    chartYear.Series[0].Points.AddXY(new DateTime(DateTime.Now.Year, i + 1, 1), ApplyTolerance(data.energyChartData.energy_chart_year_by_month.production.data[i] * multiplier, toleranceAdjustment));
                 }
 
             }catch(Exception ex)
